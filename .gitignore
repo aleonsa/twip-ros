@@ -1,0 +1,38 @@
+# ROS build and development files
+build/
+devel/
+install/
+log/
+logs/
+*.bag
+*.log
+
+# ROS specific files
+.ros/
+
+# Catkin workspace files
+.cmake/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+
+# Miscellaneous
+*.bak
+*.tmp
+*.old
+*.orig
+*.rej
+*~
+.DS_Store
+Thumbs.db

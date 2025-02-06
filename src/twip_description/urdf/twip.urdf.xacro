@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="twip">
+
+    <!-- Start GZ or Ignition depending on ROS 2 Version -->
+    <xacro:arg name="is_ignition" default="true" />
+
+    <!-- Include Gazebo Parameters -->
+    <xacro:include filename="$(find twip_description)/urdf/twip_gazebo.xacro" />
+
+    <!-- Include ros2_control Plugins -->
+    <xacro:include filename="$(find twip_description)/urdf/twip_ros2_control.xacro" />
+
+    <link name="base_footprint" />
+
+    <!-- Robot Body -->
+    <link name="base_link">
+        <inertial>
+            <!-- <origin xyz="-0.000127 -0.000036 0.061736" rpy="0 0 0" /> -->
+            <origin xyz="0 0 0.061736" rpy="0 0 0" />
+            <mass value="0.948044" />
+            <!-- <inertia ixx="1.418e-03" ixy="-1.50546e-07" ixz="-3.050305e-06"
+                iyy="2.380e-03" iyz="2.015716e-06"
+                izz="1.719e-03" /> -->
+            <inertia ixx="1.418e-03" ixy="0" ixz="0"
+                iyy="2.380e-03" iyz="0"
+                izz="1.719e-03" />
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://twip_description/meshes/robot_body.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://twip_description/meshes/robot_body.stl" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base_link_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <parent link="base_footprint" />
+        <child link="base_link" />
+    </joint>
+
+    <!-- Right Wheel -->
+    <link name="wheel_right_link">
+        <inertial>
+            <!-- <origin xyz="0.000125 -0.000897 0.000054" rpy="0 0 0" /> -->
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.033" />
+            <!-- <inertia ixx="2.5180652e-05" ixy="1.6574e-08" ixz="-1.137e-09"
+                iyy="1.4970644e-05" iyz="-9.2e-10"
+                izz="1.495729e-05" /> -->
+            <inertia ixx="2.5180652e-05" ixy="0" ixz="0"
+                iyy="1.4970644e-05" iyz="0"
+                izz="1.495729e-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://twip_description/meshes/right_wheel.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <!-- <mesh filename="package://twip_description/meshes/right_wheel.stl" /> -->
+                <sphere radius="0.0325" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_right_joint" type="continuous">
+        <origin xyz="-0.078268 0 0.0325" rpy="0 0 0" />
+        <parent
+            link="base_link" />
+        <child link="wheel_right_link" />
+        <axis xyz="1 0 0" />
+    </joint>
+
+    <!-- Left Wheel -->
+    <link name="wheel_left_link">
+        <inertial>
+            <!-- <origin xyz="0.000575  -0.000882 -6e-5" rpy="0 0 0" /> -->
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.033" />
+            <!-- <inertia ixx="2.5180652e-05" ixy="-1.6574e-08" ixz="-1.137e-09"
+                iyy="1.4970644e-05" iyz="9.2e-10"
+                izz="1.495729e-05" /> -->
+            <inertia ixx="2.5180652e-05" ixy="0" ixz="0"
+                iyy="1.4970644e-05" iyz="0"
+                izz="1.495729e-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://twip_description/meshes/left_wheel.stl" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <!-- <mesh filename="package://twip_description/meshes/left_wheel.stl" /> -->
+                <sphere radius="0.0325" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="wheel_left_joint" type="continuous">
+        <origin xyz="0.079032 0 0.0325" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="wheel_left_link" />
+        <axis xyz="1 0 0" />
+    </joint>
+
+</robot>
