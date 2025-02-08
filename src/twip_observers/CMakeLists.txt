@@ -9,11 +9,27 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
 
 include_directories(include)
+include_directories(${EIGEN3_INCLUDE_DIR})
 
 add_executable(kalman_filter src/kalman_filter.cpp)
-ament_target_dependencies(kalman_filter rclcpp nav_msgs sensor_msgs)
+ament_target_dependencies(kalman_filter
+  rclcpp
+  nav_msgs
+  sensor_msgs
+  tf2
+  tf2_ros
+)
+
+target_link_libraries(kalman_filter
+  ${rclcpp_LIBRARIES}
+  ${tf2_LIBRARIES}
+  ${tf2_ros_LIBRARIES}
+)
 
 add_executable(imu_republisher src/imu_republisher.cpp)
 ament_target_dependencies(imu_republisher rclcpp sensor_msgs)
