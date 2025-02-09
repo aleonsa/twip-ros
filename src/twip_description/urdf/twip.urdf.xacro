@@ -127,7 +127,7 @@
                 izz="2.30279421279312E-08" />
         </inertial>
         <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
+            <origin xyz="-0.0005 0 0" rpy="1.5708 1.6057  0" />
             <geometry>
                 <mesh filename="package://twip_description/meshes/imu_link.STL" />
             </geometry>
@@ -136,7 +136,7 @@
             </material>
         </visual>
         <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
+            <origin xyz="-0.0005 0 0" rpy="1.5708 1.6057  0" />
             <geometry>
                 <mesh filename="package://twip_description/meshes/imu_link.STL" />
             </geometry>
@@ -144,7 +144,7 @@
     </link>
 
     <joint name="imu_joint" type="fixed">
-        <origin xyz="-0.0005 0 0.125" rpy="1.5708 1.6057  0" />
+        <origin xyz="0 0 0.125" rpy="0 0 0" />
         <parent link="base_link" />
         <child link="imu_link" />
         <axis xyz="0 0 0" />

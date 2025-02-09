@@ -31,9 +31,6 @@ target_link_libraries(kalman_filter
   ${tf2_ros_LIBRARIES}
 )
 
-add_executable(imu_republisher src/imu_republisher.cpp)
-ament_target_dependencies(imu_republisher rclcpp sensor_msgs)
-
 install(
   DIRECTORY include
   DESTINATION include
@@ -41,7 +38,6 @@ install(
 
 install(TARGETS
   kalman_filter
-  imu_republisher
   DESTINATION lib/${PROJECT_NAME}
 )
 
