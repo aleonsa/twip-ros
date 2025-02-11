@@ -12,6 +12,16 @@
 
     <link name="base_footprint" />
 
+    <material name="blue">
+        <color rgba="0.125 0.384 0.702 1.0" />
+    </material>
+    <material name="grey">
+        <color rgba="0.5 0.5 0.5 1.0" />
+    </material>
+    <material name="dark_grey">
+        <color rgba="0.1 0.1 0.1 1.0" />
+    </material>
+
     <!-- Robot Body -->
     <link name="base_link">
         <inertial>
@@ -30,6 +40,7 @@
             <geometry>
                 <mesh filename="package://twip_description/meshes/robot_body.stl" />
             </geometry>
+            <material name="blue" />
         </visual>
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0" />
@@ -63,18 +74,19 @@
             <geometry>
                 <mesh filename="package://twip_description/meshes/right_wheel.stl" />
             </geometry>
+            <material name="dark_grey" />
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <!-- <mesh filename="package://twip_description/meshes/right_wheel.stl" /> -->
-                <sphere radius="0.0325" />
+                <mesh filename="package://twip_description/meshes/right_wheel.stl" />
+                <!-- <cylinder radius="0.0325" length="0.03" /> -->
             </geometry>
         </collision>
     </link>
 
     <joint name="wheel_right_joint" type="continuous">
-        <origin xyz="-0.078268 0 0.0325" rpy="0 0 0" />
+        <origin xyz="-0.07865 0 0.0325" rpy="0 0 0" />
         <parent
             link="base_link" />
         <child link="wheel_right_link" />
@@ -99,18 +111,19 @@
             <geometry>
                 <mesh filename="package://twip_description/meshes/left_wheel.stl" />
             </geometry>
+            <material name="dark_grey" />
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <!-- <mesh filename="package://twip_description/meshes/left_wheel.stl" /> -->
-                <sphere radius="0.0325" />
+                <mesh filename="package://twip_description/meshes/left_wheel.stl" />
+                <!-- <cylinder radius="0.0325" length="0.03" /> -->
             </geometry>
         </collision>
     </link>
 
     <joint name="wheel_left_joint" type="continuous">
-        <origin xyz="0.079032 0 0.0325" rpy="0 0 0" />
+        <origin xyz="0.07865 0 0.0325" rpy="0 0 0" />
         <parent link="base_link" />
         <child link="wheel_left_link" />
         <axis xyz="1 0 0" />
@@ -131,9 +144,7 @@
             <geometry>
                 <mesh filename="package://twip_description/meshes/imu_link.STL" />
             </geometry>
-            <material name="">
-                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-            </material>
+            <material name="grey" />
         </visual>
         <collision>
             <origin xyz="-0.0005 0 0" rpy="1.5708 1.6057  0" />

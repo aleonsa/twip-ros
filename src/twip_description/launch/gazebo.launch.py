@@ -16,9 +16,11 @@ def generate_launch_description():
     twip_description = get_package_share_directory(
         "twip_description")
 
-    model_arg = DeclareLaunchArgument(name="model", default_value=os.path.join(
-        twip_description, "urdf", "twip.urdf.xacro"
-    ),
+    model_arg = DeclareLaunchArgument(
+        name="model",
+        default_value=os.path.join(
+            twip_description, "urdf", "twip.urdf.xacro"
+        ),
         description="Absolute path to robot urdf file"
     )
 
@@ -72,7 +74,7 @@ def generate_launch_description():
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
         ]
     )
-    
+
     gz_ros2_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
